@@ -1,0 +1,22 @@
+<a routerLink="/"><button class="btn btn-light btn-sm mb-3">BACK</button></a>
+<h1 class="text-center  uppercase">Welcome to Doctors Details Page</h1>
+<div *ngIf="detail" class="card">
+<div class="card-body text-center mb-10">
+  <h3>{{detail.name}}</h3>
+  <p>SPECIALITY :  {{detail.speciality}} </p>
+  <p>AREA : {{detail.area}} </p>
+  <p>PHONE NUMBER :{{detail.area}}</p>
+  <p>REVIEW SCORE: {{detail.score}}</p>
+</div>
+</div>
+
+
+<div class="card mt-3">
+    <h3>OTHERS DOCTORS OF SAME SPECIALITY(ORDER BY REVIEW SCORE)</h3>
+  <div *ngIf="sameDetails" class="card-body" >
+  
+  <ul ></ul>
+  <li *ngFor="let det of sameDetails" >NAME:   {{det.name}} <span class="ml-4">SCORE:   {{det.score}}</span></li>
+</div>
+</div>
+

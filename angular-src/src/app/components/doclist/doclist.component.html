@@ -1,0 +1,45 @@
+<h1 class="text-center"> Find Your Doctor</h1>
+<div class="card card-body mb-3">
+  <form (ngSubmit)="searchLists()">
+    <div class="form-group">
+      <label>SPECIALITY : </label>
+      <select class="form-control mb-2" id="s" [(ngModel)]="s" name="s" >
+          <option *ngFor="let spec of specs"  [value]="spec">{{spec}}</option>
+        </select>
+      <label class="mt-2">AREA : </label>
+      <select class="form-control mb-2" id="a" [(ngModel)]="a" name="a">
+          <option *ngFor="let area of areas"  [value]="area">{{area}}</option>
+        </select>
+      <label class="mt-2">REVIEW SCORE: </label>
+      <input type="text" [(ngModel)]="score" placeholder="SEARCH FOR REVIEW SCORE GREATER THAN(MAX-5)" 
+      class="form-control"  name="score">
+      <input type="submit" class="btn btn-default mt-2" value="SEARCH">
+</div>
+  </form>
+</div>
+
+<div *ngIf="doctors">
+<div *ngIf="doctors.length>0">
+<table class="table table-bordered">
+  <th>ID</th>
+  <th>NAME</th>
+  <th>SPECIALITY</th>
+  <th>AREA</th>
+  <th>PHONE NUMBER</th>
+  <th>REVIEW SCORE</th>
+  <tr *ngFor="let doc of doctors">
+    <td>{{doc.id}}</td>
+    <td><a routerLink="/details/{{doc.id}}">{{doc.name}}</a></td>
+    <td>{{doc.speciality}}</td>
+    <td>{{doc.area}}</td>
+    <td>{{doc.phoneNo}}
+    <td>{{doc.score}}</td>
+  </tr>
+</table>
+</div>
+<div *ngIf="doctors.length<=0">
+<h4>SORRY! NO DOCTORS FOR THIS SEARCH.</h4>
+
+</div>
+</div>
+
